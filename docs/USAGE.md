@@ -21,6 +21,12 @@ Do not commit:
 2. Rename it to `config/agent-workflow.local.json`
 3. Adjust values for your machine
 
+Or run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\install.ps1
+```
+
 Example:
 
 ```json
