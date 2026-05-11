@@ -1,77 +1,60 @@
 # Hermes Claude Visible Orchestrator
 
-This repository packages a visible multi-agent workflow where Hermes acts as the orchestrator and Claude Code acts as the execution agent in a real terminal window.
+Visible multi-agent workflow for Windows + WSL where Hermes coordinates and Claude Code does the hands-on coding in a real terminal window.
 
-## What It Does
+## Features
 
-- lets Hermes plan and delegate coding tasks
-- launches Claude Code in a visible terminal session
-- lets users watch Claude work live
-- keeps Hermes responsible for monitoring and summarizing progress
-- exposes reusable Windows and WSL bridge scripts
+- visible Claude Code terminal sessions
+- Hermes-as-orchestrator workflow
+- WSL + tmux session model
+- reusable Windows bridge scripts
+- privacy-safe local configuration pattern
+- example Hermes trigger hook
 
 ## Repository Layout
 
 - `README.md`: project overview
-- `实时检测Angent工作流.md`: public-facing Chinese workflow overview
-- `config/agent-workflow.example.json`: public config template
-- `docs/SETUP.md`: setup instructions
-- `docs/USAGE.md`: usage and privacy-safe local configuration
+- `LICENSE`: MIT license
+- `实时检测Angent工作流.md`: Chinese overview
+- `config/agent-workflow.example.json`: config template
+- `docs/SETUP.md`: installation and setup
+- `docs/USAGE.md`: usage and privacy guidance
+- `docs/TROUBLESHOOTING.md`: common failure modes
+- `docs/HERMES_INTEGRATION.md`: how to wire this into Hermes
 - `skills/hermes-claude-visible-orchestrator/SKILL.md`: Hermes skill definition
-- `scripts/windows/`: Windows-side bridge scripts
-- `scripts/wsl/`: WSL-side tmux attach script
-- `examples/hermes_claude_monitor_hook.py`: portable trigger-emitter example
-
-## Included Code
-
-### Windows bridge
-
-- `scripts/windows/install.ps1`
-- `scripts/windows/claude_bridge_helper.ps1`
-- `scripts/windows/claude_tmux_monitor.ps1`
-- `scripts/windows/claude_tmux_attach.cmd`
-- `scripts/windows/claude_tmux_attach.vbs`
-- `scripts/windows/install_startup_helper.ps1`
-- `scripts/windows/load_workflow_config.ps1`
-
-### WSL bridge
-
-- `scripts/wsl/attach_tmux.sh`
-
-### Hermes integration example
-
-- `examples/hermes_claude_monitor_hook.py`
-
-This example shows how an orchestration layer can detect Claude-related tmux commands and emit a trigger file for the desktop helper.
-
-## Target Environment
-
-- Windows
-- WSL
-- tmux
-- Hermes or another orchestration layer
-- Claude Code CLI
+- `scripts/windows/`: Windows bridge scripts
+- `scripts/wsl/`: WSL bridge script
+- `examples/hermes_claude_monitor_hook.py`: portable trigger example
 
 ## Quick Start
 
-1. Run `powershell -ExecutionPolicy Bypass -File .\scripts\windows\install.ps1`
-2. Review `config/agent-workflow.local.json`
-3. Start the Windows helper with `scripts/windows/claude_bridge_helper.ps1`
-4. Create a Claude tmux session in WSL
-5. Launch Claude inside that session
-6. Emit a trigger file or call `claude_tmux_monitor.ps1`
-7. Watch the visible `Claude Monitor` terminal attach
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\install.ps1
+```
 
-Detailed steps are in [docs/SETUP.md](/C:/Users/c/Documents/New%20project/docs/SETUP.md).
+Then:
+
+1. review `config/agent-workflow.local.json`
+2. start `scripts/windows/claude_bridge_helper.ps1`
+3. create a Claude tmux session in WSL
+4. launch Claude in that session
+5. emit a trigger file or call `claude_tmux_monitor.ps1`
+
+## Docs
+
+- [Setup](/C:/Users/c/Documents/New%20project/docs/SETUP.md)
+- [Usage](/C:/Users/c/Documents/New%20project/docs/USAGE.md)
+- [Troubleshooting](/C:/Users/c/Documents/New%20project/docs/TROUBLESHOOTING.md)
+- [Hermes Integration](/C:/Users/c/Documents/New%20project/docs/HERMES_INTEGRATION.md)
 
 ## Privacy
 
-This repository is structured to avoid leaking machine-specific information by default.
+This repo is structured so people can publish the workflow without publishing their own machine details.
 
-- local settings belong in `config/agent-workflow.local.json`
+- machine-specific settings belong in `config/agent-workflow.local.json`
 - `config/*.local.json` is ignored by Git
-- local startup scripts and databases are not included
+- local startup helpers, logs, databases, and tokens should stay out of version control
 
 ## Status
 
-This is an extracted local workflow prepared for open sharing and further extension. The repository includes reusable bridge code, but you may still want to adapt startup behavior and Hermes integration details for your own machine.
+This is now a reusable open-source starter for the workflow, not just a local note dump. Most users will still need to adapt the Hermes-side trigger integration for their own environment.
