@@ -82,4 +82,10 @@
 - 常见问题和故障排查
 - 安全提示和权限边界说明
 
+## 当前 Skill 来源
 
+这个公开说明整理自本地 Hermes Skill：
+
+`//wsl.localhost/Ubuntu/home/c/.hermes/skills/autonomous-ai-agents/hermes-claude-visible-orchestrator/SKILL.md`
+
+如果你后续要把它发布到 GitHub，建议把这个文件作为 README 或 docs 页面使用，再配合实际脚本一起提交。
