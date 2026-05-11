@@ -21,6 +21,7 @@ Visible multi-agent workflow for Windows + WSL where Hermes coordinates and Clau
 - `docs/USAGE.md`: usage and privacy guidance
 - `docs/TROUBLESHOOTING.md`: common failure modes
 - `docs/HERMES_INTEGRATION.md`: how to wire this into Hermes
+- `docs/DEMO.md`: minimal end-to-end demo
 - `skills/hermes-claude-visible-orchestrator/SKILL.md`: Hermes skill definition
 - `scripts/windows/`: Windows bridge scripts
 - `scripts/wsl/`: WSL bridge script
@@ -42,10 +43,11 @@ Then:
 
 ## Docs
 
-- [Setup](/C:/Users/c/Documents/New%20project/docs/SETUP.md)
-- [Usage](/C:/Users/c/Documents/New%20project/docs/USAGE.md)
-- [Troubleshooting](/C:/Users/c/Documents/New%20project/docs/TROUBLESHOOTING.md)
-- [Hermes Integration](/C:/Users/c/Documents/New%20project/docs/HERMES_INTEGRATION.md)
+- [Setup](docs/SETUP.md)
+- [Usage](docs/USAGE.md)
+- [Troubleshooting](docs/TROUBLESHOOTING.md)
+- [Hermes Integration](docs/HERMES_INTEGRATION.md)
+- [Minimal Demo](docs/DEMO.md)
 
 ## Privacy
 
@@ -54,6 +56,14 @@ This repo is structured so people can publish the workflow without publishing th
 - machine-specific settings belong in `config/agent-workflow.local.json`
 - `config/*.local.json` is ignored by Git
 - local startup helpers, logs, databases, and tokens should stay out of version control
+
+## Safety
+
+The example workflow is optimized for low-friction local experimentation, not for high-security environments.
+
+- review Claude permission flags before using them on sensitive repositories
+- prefer tighter permissions if you do not need full local autonomy
+- do not run this workflow on machines or directories you do not trust
 
 ## Status
 
