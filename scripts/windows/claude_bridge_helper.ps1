@@ -1,9 +1,28 @@
 $ErrorActionPreference = "Stop"
 
 param(
-    [string]$BridgeDir = "$env:USERPROFILE\.claude-bridge",
-    [string]$Distro = "Ubuntu"
+    [string]$BridgeDir,
+    [string]$Distro
 )
+
+$configLoader = Join-Path $PSScriptRoot "load_workflow_config.ps1"
+if (Test-Path -LiteralPath $configLoader) {
+    . $configLoader
+    $workflowConfig = Get-WorkflowConfig
+} else {
+    $workflowConfig = [pscustomobject]@{
+        bridgeDir = "$env:USERPROFILE\.claude-bridge"
+        distro = "Ubuntu"
+    }
+}
+
+if (-not $BridgeDir) {
+    $BridgeDir = $workflowConfig.bridgeDir
+}
+
+if (-not $Distro) {
+    $Distro = $workflowConfig.distro
+}
 
 $triggerPath = Join-Path $BridgeDir "trigger.json"
 $statePath = Join-Path $BridgeDir "state.json"
