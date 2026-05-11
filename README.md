@@ -26,6 +26,7 @@ This repository packages a visible multi-agent workflow where Hermes acts as the
 
 ### Windows bridge
 
+- `scripts/windows/install.ps1`
 - `scripts/windows/claude_bridge_helper.ps1`
 - `scripts/windows/claude_tmux_monitor.ps1`
 - `scripts/windows/claude_tmux_attach.cmd`
@@ -53,12 +54,13 @@ This example shows how an orchestration layer can detect Claude-related tmux com
 
 ## Quick Start
 
-1. Copy `config/agent-workflow.example.json` to `config/agent-workflow.local.json`
-2. Start the Windows helper with `scripts/windows/claude_bridge_helper.ps1`
-3. Create a Claude tmux session in WSL
-4. Launch Claude inside that session
-5. Emit a trigger file or call `claude_tmux_monitor.ps1`
-6. Watch the visible `Claude Monitor` terminal attach
+1. Run `powershell -ExecutionPolicy Bypass -File .\scripts\windows\install.ps1`
+2. Review `config/agent-workflow.local.json`
+3. Start the Windows helper with `scripts/windows/claude_bridge_helper.ps1`
+4. Create a Claude tmux session in WSL
+5. Launch Claude inside that session
+6. Emit a trigger file or call `claude_tmux_monitor.ps1`
+7. Watch the visible `Claude Monitor` terminal attach
 
 Detailed steps are in [docs/SETUP.md](/C:/Users/c/Documents/New%20project/docs/SETUP.md).
 
