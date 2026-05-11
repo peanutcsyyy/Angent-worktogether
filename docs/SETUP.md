@@ -45,6 +45,8 @@ tmux new-session -d -s claude-demo -x 160 -y 45
 tmux send-keys -t claude-demo 'cd /path/to/project && claude --permission-mode bypassPermissions --dangerously-skip-permissions --allowedTools default' Enter
 ```
 
+If you want a safer default, start with a more restrictive Claude invocation first and only relax permissions if your workflow actually needs it.
+
 ## 4. Emit a visible-monitor trigger
 
 You can either:
@@ -53,7 +55,7 @@ You can either:
 - have Hermes write `%USERPROFILE%\.claude-bridge\trigger.json`, or
 - reuse `examples/hermes_claude_monitor_hook.py`
 
-See also [USAGE.md](/C:/Users/c/Documents/New%20project/docs/USAGE.md) for privacy-safe local configuration.
+See also [USAGE.md](USAGE.md) for privacy-safe local configuration.
 
 ## 5. Verify the monitor window
 
