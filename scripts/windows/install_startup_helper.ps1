@@ -1,7 +1,15 @@
 $ErrorActionPreference = "Stop"
 
+$configLoader = Join-Path $PSScriptRoot "load_workflow_config.ps1"
+if (Test-Path -LiteralPath $configLoader) {
+    . $configLoader
+    $workflowConfig = Get-WorkflowConfig
+} else {
+    $workflowConfig = [pscustomobject]@{ helperStartupName = "claude_bridge_helper.cmd" }
+}
+
 $startupDir = [Environment]::GetFolderPath("Startup")
-$launcherPath = Join-Path $startupDir "claude_bridge_helper.cmd"
+$launcherPath = Join-Path $startupDir $workflowConfig.helperStartupName
 $helperPath = Join-Path $PSScriptRoot "claude_bridge_helper.ps1"
 
 if (-not (Test-Path -LiteralPath $helperPath)) {
