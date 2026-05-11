@@ -16,6 +16,12 @@ Optional first step:
 Copy-Item .\config\agent-workflow.example.json .\config\agent-workflow.local.json
 ```
 
+Or do the initial setup in one step:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\windows\install.ps1
+```
+
 Run:
 
 ```powershell
