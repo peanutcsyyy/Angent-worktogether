@@ -10,6 +10,12 @@
 
 ## 2. Start the bridge helper
 
+Optional first step:
+
+```powershell
+Copy-Item .\config\agent-workflow.example.json .\config\agent-workflow.local.json
+```
+
 Run:
 
 ```powershell
@@ -40,6 +46,8 @@ You can either:
 - call `scripts/windows/claude_tmux_monitor.ps1` directly, or
 - have Hermes write `%USERPROFILE%\.claude-bridge\trigger.json`, or
 - reuse `examples/hermes_claude_monitor_hook.py`
+
+See also [USAGE.md](/C:/Users/c/Documents/New%20project/docs/USAGE.md) for privacy-safe local configuration.
 
 ## 5. Verify the monitor window
 
